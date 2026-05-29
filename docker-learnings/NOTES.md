@@ -1,13 +1,19 @@
 # Docker commands
- - docker ps -> list of all the process/containers
- - docker images -> list of all the docker images
+ - docker ps        ->   list of all the running process/containers
+ - docker ps -a     ->      list of all the containers/process
+ - docker images    ->      list of all the docker images
  
- - docker kill <containerID> -> used to kill the container
- - docker rmi <imgNAME> --force -> need to remove docker img forcefully
+ - docker kill <containerID or containerNAME>   ->    used to kill the running container
+ - docker stop <containerID or containerNAME>   ->    used to stop running container step by step gracefully
 
- - PORT MAPPING
-    -- docker run -p <local_machine_PORT>:<docker_container_PORT> name-of-IMG
+ - docker rmi <imgNAME OR imgID> --force        ->    To remove docker img forcefully
+ - docker rm <containerNAME or containerID>     ->    To remove the docker container
 
- - Creation of IMG for current REPO -> Need to build
-    -- docker build -t <tag-name> .
+ - docker run -d <dockerIMG_NAME>               ->    To run docker container in detached MODE (Background)
+
+ ## PORT MAPPING
+    - docker run -p <local_machine_PORT>:<docker_container_PORT> dockerIMG-NAME
+
+ ## Creation of IMG for current REPO -> Need to build
+    - docker build -t <tag-name> .
 
