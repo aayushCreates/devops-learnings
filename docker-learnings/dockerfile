@@ -3,10 +3,19 @@ FROM node:22-alpine
 
 WORKDIR /app
 
+# ENV DATABASE_URL=whatever your url   ->> we can do like this but we don't do this becuase we never push the secret like this"
+
+
+COPY ./package.json ./package.json
+COPY ./package-lock.json ./package-lock.json
+
+RUN npm install
+
+
 COPY . .        
 # copy files from original -> docker container
 
-RUN npm install
+# RUN npm install -> shifting this to above because if only file changes -> packages should not be again and again install -> should be build from cache
 RUN npm run build
 
 EXPOSE 5050
